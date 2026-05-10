@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Perfumes — Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --dark: #0E0C0A;
+    --dark2: #1A1714;
+    --dark3: #252118;
+    --cream: #F5EFE4;
+    --text-muted: #8A8070;
+    --masc: #2A4A6B;
+    --masc-light: #4A7FAF;
+    --fem: #7B3B5A;
+    --fem-light: #C4709A;
+    --uni: #2E5E4E;
+    --uni-light: #5CA882;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(135deg, #0E0C0A 0%, #1E1A10 50%, #0E0C0A 100%);
+    border-bottom: 1px solid var(--gold);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-sub {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero-date {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+  .ornament {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    margin: 20px 0;
+  }
+  .ornament-line { height: 1px; width: 80px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  .ornament-line.r { background: linear-gradient(90deg, var(--gold), transparent); }
+  .ornament-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+
+  /* PRICING LEGEND */
+  .pricing-info {
+    display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+    padding: 20px 40px;
+    background: var(--dark2);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+  }
+  .pricing-info span { color: var(--gold); font-weight: 500; }
+
+  /* FILTERS */
+  .filters {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(14,12,10,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 14px 40px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .filter-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--text-muted); margin-right: 6px;
+  }
+  .filter-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--text-muted);
+    padding: 6px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--dark);
+    font-weight: 600;
+  }
+  .filter-btn.brand-filter { border-color: rgba(255,255,255,0.15); }
+  .filter-btn.brand-filter:hover, .filter-btn.brand-filter.active {
+    background: var(--cream); border-color: var(--cream); color: var(--dark);
+  }
+  .search-wrap { margin-left: auto; }
+  .search-input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--cream);
+    padding: 7px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    outline: none;
+    width: 200px;
+    transition: border-color 0.2s;
+  }
+  .search-input::placeholder { color: var(--text-muted); }
+  .search-input:focus { border-color: var(--gold); }
+
+  /* BRAND SECTIONS */
+  .brand-section { padding: 40px 40px 20px; }
+  .brand-header {
+    display: flex; align-items: center; gap: 20px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 400;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+  .brand-count {
+    font-size: 11px; letter-spacing: 2px; color: var(--text-muted);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* PRODUCT GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 22px 20px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+  .card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    transition: opacity 0.3s;
+  }
+  .card.masc::before { background: linear-gradient(90deg, var(--masc), var(--masc-light)); }
+  .card.fem::before { background: linear-gradient(90deg, var(--fem), var(--fem-light)); }
+  .card.uni::before { background: linear-gradient(90deg, var(--uni), var(--uni-light)); }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(201,168,76,0.3);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,168,76,0.06);
+  }
+
+  /* Gender badge */
+  .badge-row {
+    display: flex; gap: 6px; align-items: center; margin-bottom: 12px; flex-wrap: wrap;
+  }
+  .badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 2px;
+  }
+  .badge.masc { background: rgba(42,74,107,0.4); color: var(--masc-light); border: 1px solid rgba(42,74,107,0.6); }
+  .badge.fem { background: rgba(123,59,90,0.4); color: var(--fem-light); border: 1px solid rgba(123,59,90,0.6); }
+  .badge.uni { background: rgba(46,94,78,0.4); color: var(--uni-light); border: 1px solid rgba(46,94,78,0.6); }
+  .badge.scent {
+    background: rgba(201,168,76,0.1);
+    color: var(--gold-light);
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+  .badge.type {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .card-product {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: var(--cream);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .card-volume {
+    font-size: 11px; letter-spacing: 2px; color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .price-block { display: flex; gap: 12px; flex-wrap: wrap; }
+  .price-item { flex: 1; min-width: 90px; }
+  .price-label {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 4px;
+  }
+  .price-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; letter-spacing: 1px;
+    color: var(--gold);
+  }
+  .price-value.bulk { color: var(--cream); font-size: 18px; }
+  .price-divider {
+    width: 1px; background: rgba(255,255,255,0.08);
+    margin: 0 4px; align-self: stretch;
+  }
+
+
+  /* NO PRICE */
+  .no-price { color: var(--text-muted); font-size: 12px; letter-spacing: 2px; font-style: italic; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center; padding: 40px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    margin-top: 40px;
+    color: var(--text-muted); font-size: 11px; letter-spacing: 2px;
+  }
+  .footer span { color: var(--gold); }
+
+  /* HIDDEN */
+  .card.hidden, .brand-section.hidden { display: none; }
+  .brand-section.all-hidden { display: none; }
+
+  /* LEGEND */
+  .legend {
+    display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+    padding: 16px 40px;
+    background: var(--dark2);
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .ld-masc { background: var(--masc-light); }
+  .ld-fem { background: var(--fem-light); }
+  .ld-uni { background: var(--uni-light); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px; }
+    .brand-section { padding: 30px 16px 16px; }
+    .filters { padding: 12px 16px; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .search-wrap { width: 100%; }
+    .search-input { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-sub">Tabela de Preços Exclusiva</p>
+  <h1>CATÁLOGO DE <em>Perfumes</em></h1>
+  <div class="ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line r"></div>
+  </div>
+  <p class="hero-date">Abril · 2026 · Edição Especial</p>
+</header>
+
+<div class="pricing-info">
+  <div>Preços em <span>R$</span> · Valores sujeitos a alteração</div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot ld-masc"></div><span>Masculino</span></div>
+  <div class="legend-item"><div class="legend-dot ld-fem"></div><span>Feminino</span></div>
+  <div class="legend-item"><div class="legend-dot ld-uni"></div><span>Unissex</span></div>
+</div>
+
+<div class="filters" id="filters">
+  <span class="filter-label">Gênero:</span>
+  <button class="filter-btn active" data-filter="all">Todos</button>
+  <button class="filter-btn" data-filter="masc">Masculino</button>
+  <button class="filter-btn" data-filter="fem">Feminino</button>
+  <button class="filter-btn" data-filter="uni">Unissex</button>
+  <span class="filter-label" style="margin-left:16px">Fragrância:</span>
+  <button class="filter-btn" data-scent="all-scent">Todas</button>
+  <button class="filter-btn" data-scent="Doce">Doce</button>
+  <button class="filter-btn" data-scent="Fresco">Fresco</button>
+  <button class="filter-btn" data-scent="Amadeirado">Amadeirado</button>
+  <button class="filter-btn" data-scent="Floral">Floral</button>
+  <button class="filter-btn" data-scent="Oriental">Oriental</button>
+  <button class="filter-btn" data-scent="Cítrico">Cítrico</button>
+  <div class="search-wrap">
+    <input class="search-input" type="text" id="searchInput" placeholder="Buscar perfume...">
+  </div>
+</div>
+
+<main id="catalog"></main>
+
+<footer class="footer">
+  <p>Catálogo gerado em Abril 2026 · Preços de custo × multiplicador · <span>Uso exclusivo para apresentação</span></p>
+</footer>
+
+<script>
+const products = [
+  // AZZARO
+  {brand:"AZZARO",name:"POUR HOMME",vol:"100ML",gender:"masc",scent:"Aromático",type:"EDT",cost:195},
+  {brand:"AZZARO",name:"POUR HOMME",vol:"200ML",gender:"masc",scent:"Aromático",type:"EDT",cost:265},
+  {brand:"AZZARO",name:"WANTED",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:295},
+  {brand:"AZZARO",name:"THE MOST WANTED",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:315},
+  {brand:"AZZARO",name:"THE MOST WANTED PARFUM",vol:"100ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:415},
+  {brand:"AZZARO",name:"THE MOST WANTED INTENSE",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:440},
+  {brand:"AZZARO",name:"CHROME",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:265},
+  // ANIMALE
+  {brand:"ANIMALE",name:"ANIMALE MEN",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:165},
+  {brand:"ANIMALE",name:"ANIMALE MEN",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:210},
+  {brand:"ANIMALE",name:"ANIMALE",vol:"100ML",gender:"uni",scent:"Amadeirado",type:"EDT",cost:155},
+  {brand:"ANIMALE",name:"ANIMALE",vol:"200ML",gender:"uni",scent:"Amadeirado",type:"EDT",cost:205},
+  {brand:"ANIMALE",name:"ANIMALE GOLD",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:170},
+  {brand:"ANIMALE",name:"SEDUCTION MAS",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:155},
+  {brand:"ANIMALE",name:"BLACK",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:145},
+  {brand:"ANIMALE",name:"ANIMALE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:195},
+  {brand:"ANIMALE",name:"ANIMALE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:175},
+  {brand:"ANIMALE",name:"SEXY FEM",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:175},
+  {brand:"ANIMALE",name:"LOVE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:170},
+  {brand:"ANIMALE",name:"SEDUCTION FEM",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:180},
+  // BANDERAS
+  {brand:"BANDERAS",name:"THE SECRET",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:135},
+  {brand:"BANDERAS",name:"THE SECRET",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:160},
+  {brand:"BANDERAS",name:"THE SECRET ABSOLU",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:145},
+  {brand:"BANDERAS",name:"THE SECRET GOLDEN",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:140},
+  {brand:"BANDERAS",name:"THE SECRET GOLDEN",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDT",cost:150},
+  {brand:"BANDERAS",name:"SECRET GOLDEN ABSOLU",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:150},
+  {brand:"BANDERAS",name:"ICON",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:140},
+  {brand:"BANDERAS",name:"ICON",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:170},
+  {brand:"BANDERAS",name:"ICON",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:155},
+  {brand:"BANDERAS",name:"ICON",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDP",cost:185},
+  {brand:"BANDERAS",name:"ICON ELIXIR",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:165},
+  {brand:"BANDERAS",name:"BLUE SEDUCTION",vol:"200ML",gender:"masc",scent:"Fresco",type:"EDT",cost:145},
+  {brand:"BANDERAS",name:"POWER OF SEDUCTION",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:135},
+  {brand:"BANDERAS",name:"KING OF SEDUCTION",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:135},
+  {brand:"BANDERAS",name:"KING SEDUCTION ABSOLUTE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:135},
+  {brand:"BANDERAS",name:"THE ICON INTENSE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:180},
+  {brand:"BANDERAS",name:"THE ICON FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:175},
+  {brand:"BANDERAS",name:"THE ICON SPLEND FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:175},
+  {brand:"BANDERAS",name:"TEMPTATION FEM",vol:"100ML",gender:"fem",scent:"Doce",type:"EDT",cost:135},
+  {brand:"BANDERAS",name:"QUEEN SUMMERLAND",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:130},
+  // BRITNEY SPEARS
+  {brand:"BRITNEY SPEARS",name:"FANTASY",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:175},
+  {brand:"BRITNEY SPEARS",name:"FANTASY MIDNIGHT",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:180},
+  // BURBERRY
+  {brand:"BURBERRY",name:"GODDESS",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:525},
+  {brand:"BURBERRY",name:"GODDESS",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:315},
+  {brand:"BURBERRY",name:"GODDESS",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:390},
+  {brand:"BURBERRY",name:"GODDESS INTENSE",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:575},
+  {brand:"BURBERRY",name:"GODDESS INTENSE",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:320},
+  {brand:"BURBERRY",name:"GODDESS INTENSE",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:420},
+  {brand:"BURBERRY",name:"GODDESS PARFUM",vol:"100ML",gender:"fem",scent:"Doce",type:"Parfum",cost:555},
+  {brand:"BURBERRY",name:"GODDESS PARFUM",vol:"30ML",gender:"fem",scent:"Doce",type:"Parfum",cost:315},
+  {brand:"BURBERRY",name:"GODDESS PARFUM",vol:"50ML",gender:"fem",scent:"Doce",type:"Parfum",cost:430},
+  {brand:"BURBERRY",name:"HER",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:475},
+  {brand:"BURBERRY",name:"HER",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:330},
+  {brand:"BURBERRY",name:"HER",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:455},
+  {brand:"BURBERRY",name:"HER INTENSE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:585},
+  {brand:"BURBERRY",name:"HER INTENSE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:343},
+  {brand:"BURBERRY",name:"HER INTENSE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:475},
+  {brand:"BURBERRY",name:"HER EDT",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:505},
+  {brand:"BURBERRY",name:"HER EDT",vol:"50ML",gender:"fem",scent:"Floral",type:"EDT",cost:395},
+  {brand:"BURBERRY",name:"HERO",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:540},
+  {brand:"BURBERRY",name:"HERO",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:590},
+  {brand:"BURBERRY",name:"HERO EDT",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:450},
+  {brand:"BURBERRY",name:"HERO EDT",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:375},
+  {brand:"BURBERRY",name:"HERO PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:595},
+  {brand:"BURBERRY",name:"HERO PARFUM",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:670},
+  // BVLGARI
+  {brand:"BVLGARI",name:"MAN IN BLACK",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:580},
+  {brand:"BVLGARI",name:"AQVA",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDT",cost:560},
+  {brand:"BVLGARI",name:"OMNIA CORAL",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:630},
+  {brand:"BVLGARI",name:"OMNIA CRYSTALINE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:630},
+  {brand:"BVLGARI",name:"OMNIA AMETHYSTE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:650},
+  // CALVIN KLEIN
+  {brand:"CALVIN KLEIN",name:"CK ONE",vol:"100ML",gender:"uni",scent:"Fresco",type:"EDT",cost:170},
+  {brand:"CALVIN KLEIN",name:"CK ONE",vol:"200ML",gender:"uni",scent:"Fresco",type:"EDT",cost:215},
+  {brand:"CALVIN KLEIN",name:"CK BE",vol:"100ML",gender:"uni",scent:"Fresco",type:"EDT",cost:145},
+  {brand:"CALVIN KLEIN",name:"CK BE",vol:"200ML",gender:"uni",scent:"Fresco",type:"EDT",cost:175},
+  {brand:"CALVIN KLEIN",name:"CK EVERYONE",vol:"100ML",gender:"uni",scent:"Fresco",type:"EDT",cost:210},
+  {brand:"CALVIN KLEIN",name:"CK EVERYONE",vol:"200ML",gender:"uni",scent:"Fresco",type:"EDT",cost:245},
+  {brand:"CALVIN KLEIN",name:"CK EVERYONE",vol:"100ML",gender:"uni",scent:"Fresco",type:"EDP",cost:245},
+  {brand:"CALVIN KLEIN",name:"CK EVERYONE",vol:"200ML",gender:"uni",scent:"Fresco",type:"EDP",cost:260},
+  {brand:"CALVIN KLEIN",name:"ETERNITY FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:260},
+  {brand:"CALVIN KLEIN",name:"CK ONE SHOCK",vol:"100ML",gender:"uni",scent:"Doce",type:"EDT",cost:160},
+  {brand:"CALVIN KLEIN",name:"ETERNITY AROMATIC ESSENCE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:330},
+  {brand:"CALVIN KLEIN",name:"ETERNITY AMBER ESSENCE FEM",vol:"100ML",gender:"fem",scent:"Oriental",type:"EDP",cost:325},
+  {brand:"CALVIN KLEIN",name:"ETERNITY MAS",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:205},
+  {brand:"CALVIN KLEIN",name:"ETERNITY MAS",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:245},
+  {brand:"CALVIN KLEIN",name:"ESCAPE MAS",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:180},
+  {brand:"CALVIN KLEIN",name:"ETERNITY AROMATIC ESSENCE MAS",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:315},
+  {brand:"CALVIN KLEIN",name:"ETERNITY AMBER ESSENCE MAS",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:310},
+  {brand:"CALVIN KLEIN",name:"CK IN2U MAS",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:150},
+  {brand:"CALVIN KLEIN",name:"CK IN2U MAS",vol:"150ML",gender:"masc",scent:"Fresco",type:"EDT",cost:175},
+  {brand:"CALVIN KLEIN",name:"CK IN2U FEM",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:160},
+  {brand:"CALVIN KLEIN",name:"CK IN2U FEM",vol:"150ML",gender:"fem",scent:"Fresco",type:"EDT",cost:180},
+  {brand:"CALVIN KLEIN",name:"DEFY",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:280},
+  {brand:"CALVIN KLEIN",name:"ESCAPE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:195},
+  {brand:"CALVIN KLEIN",name:"EUPHORIA MEN",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:215},
+  {brand:"CALVIN KLEIN",name:"EUPHORIA FEM",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:260},
+  {brand:"CALVIN KLEIN",name:"MY EUPHORIA FEM",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:330},
+  {brand:"CALVIN KLEIN",name:"SHOCK FEM",vol:"100ML",gender:"fem",scent:"Doce",type:"EDT",cost:165},
+  // CACHAREL
+  {brand:"CACHAREL",name:"AMOR AMOR",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:350},
+  {brand:"CACHAREL",name:"ANAIS ANAIS",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:375},
+  // CHLOE
+  {brand:"CHLOE",name:"SIGNATURE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:290},
+  {brand:"CHLOE",name:"SIGNATURE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:420},
+  {brand:"CHLOE",name:"SIGNATURE",vol:"75ML",gender:"fem",scent:"Floral",type:"EDP",cost:465},
+  {brand:"CHLOE",name:"SIGNATURE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:515},
+  {brand:"CHLOE",name:"L'EAU INTENSE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:290},
+  {brand:"CHLOE",name:"L'EAU INTENSE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:410},
+  {brand:"CHLOE",name:"L'EAU INTENSE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:515},
+  {brand:"CHLOE",name:"SIGNATURE LUMINEUSE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:310},
+  {brand:"CHLOE",name:"SIGNATURE LUMINEUSE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:425},
+  {brand:"CHLOE",name:"SIGNATURE LUMINEUSE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:540},
+  {brand:"CHLOE",name:"ROSE TANGERINE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:350},
+  {brand:"CHLOE",name:"LOVE STORY",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:225},
+  {brand:"CHLOE",name:"LOVE STORY",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:405},
+  {brand:"CHLOE",name:"NATURELLE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:295},
+  {brand:"CHLOE",name:"NATURELLE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:415},
+  {brand:"CHLOE",name:"NATURELLE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:495},
+  {brand:"CHLOE",name:"NATURELLE INTENSE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:295},
+  {brand:"CHLOE",name:"NATURELLE INTENSE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:415},
+  {brand:"CHLOE",name:"NATURELLE INTENSE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:495},
+  {brand:"CHLOE",name:"NOMADE",vol:"30ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:295},
+  {brand:"CHLOE",name:"NOMADE",vol:"50ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:410},
+  {brand:"CHLOE",name:"NOMADE",vol:"100ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:465},
+  {brand:"CHLOE",name:"NOMADE LUMIERE D EGYPTE",vol:"30ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:295},
+  {brand:"CHLOE",name:"NOMADE LUMIERE D EGYPTE",vol:"50ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:410},
+  {brand:"CHLOE",name:"NOMADE LUMIERE D EGYPTE",vol:"100ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:465},
+  {brand:"CHLOE",name:"NOMADE NUIT D EGYPTE",vol:"30ML",gender:"fem",scent:"Oriental",type:"EDP",cost:295},
+  {brand:"CHLOE",name:"NOMADE NUIT D EGYPTE",vol:"50ML",gender:"fem",scent:"Oriental",type:"EDP",cost:410},
+  {brand:"CHLOE",name:"NOMADE NUIT D EGYPTE",vol:"100ML",gender:"fem",scent:"Oriental",type:"EDP",cost:465},
+  // CAROLINA HERRERA
+  {brand:"CAROLINA HERRERA",name:"212 FEMME",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:485},
+  {brand:"CAROLINA HERRERA",name:"212 FEMME",vol:"30ML",gender:"fem",scent:"Floral",type:"EDT",cost:260},
+  {brand:"CAROLINA HERRERA",name:"212 FEMME",vol:"60ML",gender:"fem",scent:"Floral",type:"EDT",cost:350},
+  {brand:"CAROLINA HERRERA",name:"212 HEROES FOR HER",vol:"30ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:265},
+  {brand:"CAROLINA HERRERA",name:"212 HEROES FOR HER",vol:"80ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:484},
+  {brand:"CAROLINA HERRERA",name:"212 HEROES MEN",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:445},
+  {brand:"CAROLINA HERRERA",name:"212 HEROES MEN",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:270},
+  {brand:"CAROLINA HERRERA",name:"212 HEROES MEN",vol:"90ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:355},
+  {brand:"CAROLINA HERRERA",name:"212 MEN",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:375},
+  {brand:"CAROLINA HERRERA",name:"212 NYC MEN",vol:"200ML",gender:"masc",scent:"Fresco",type:"EDT",cost:475},
+  {brand:"CAROLINA HERRERA",name:"212 VIP BLACK CAB",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:485},
+  {brand:"CAROLINA HERRERA",name:"212 VIP BLACK MEN",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:375},
+  {brand:"CAROLINA HERRERA",name:"212 VIP BLACK MEN",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDP",cost:505},
+  {brand:"CAROLINA HERRERA",name:"212 VIP BLACK MEN",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDP",cost:335},
+  {brand:"CAROLINA HERRERA",name:"212 VIP BLACK ELIXIR",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:445},
+  {brand:"CAROLINA HERRERA",name:"212 VIP BLACK ELIXIR",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDP",cost:400},
+  {brand:"CAROLINA HERRERA",name:"212 VIP BLACK NY RODEO",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:400},
+  {brand:"CAROLINA HERRERA",name:"212 VIP MEN",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:385},
+  {brand:"CAROLINA HERRERA",name:"212 VIP MEN",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDT",cost:505},
+  {brand:"CAROLINA HERRERA",name:"212 VIP ROSE CAB",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:530},
+  {brand:"CAROLINA HERRERA",name:"212 VIP ROSE",vol:"125ML",gender:"fem",scent:"Floral",type:"EDP",cost:490},
+  {brand:"CAROLINA HERRERA",name:"212 VIP ROSE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:285},
+  {brand:"CAROLINA HERRERA",name:"212 VIP ROSE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:390},
+  {brand:"CAROLINA HERRERA",name:"212 VIP ROSE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:465},
+  {brand:"CAROLINA HERRERA",name:"212 VIP ROSE ELIXIR",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:305},
+  {brand:"CAROLINA HERRERA",name:"212 VIP ROSE ELIXIR",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:445},
+  {brand:"CAROLINA HERRERA",name:"212 VIP ROSE ELIXIR",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:525},
+  {brand:"CAROLINA HERRERA",name:"212 VIP ROSE NY RODEO",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:485},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY COBALT",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:405},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY COBALT",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:525},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY COBALT",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:330},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY COBALT ELIXIR",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:535},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY COBALT ELIXIR",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:495},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY COBALT ELIXIR",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:390},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:400},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDT",cost:365},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY LE PARFUM",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDP",cost:390},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY LE PARFUM",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:485},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY LE PARFUM",vol:"150ML",gender:"masc",scent:"Oriental",type:"EDP",cost:565},
+  {brand:"CAROLINA HERRERA",name:"BAD BOY SPARKLING ICE",vol:"150ML",gender:"masc",scent:"Fresco",type:"EDT",cost:380},
+  {brand:"CAROLINA HERRERA",name:"CH FEMME",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:455},
+  {brand:"CAROLINA HERRERA",name:"CH FEMME",vol:"30ML",gender:"fem",scent:"Floral",type:"EDT",cost:295},
+  {brand:"CAROLINA HERRERA",name:"BIRDS OF PARADISE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:425},
+  {brand:"CAROLINA HERRERA",name:"BIRDS OF PARADISE MEN",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDP",cost:355},
+  {brand:"CAROLINA HERRERA",name:"CH MEN",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:385},
+  {brand:"CAROLINA HERRERA",name:"CH MEN",vol:"200ML",gender:"masc",scent:"Fresco",type:"EDT",cost:495},
+  {brand:"CAROLINA HERRERA",name:"CH PASION FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:475},
+  {brand:"CAROLINA HERRERA",name:"CH PASION MEN",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:334},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BLUSH BOWTASTIC",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:545},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BLUSH",vol:"150ML",gender:"fem",scent:"Floral",type:"EDP",cost:635},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BLUSH",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:300},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BLUSH",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:435},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BLUSH",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:515},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BLUSH ELIXIR",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:300},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BLUSH ELIXIR",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:465},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BLUSH ELIXIR",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:570},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BLUSH POLKA PARADISE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:560},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL BOWTASTIC",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:560},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL",vol:"150ML",gender:"fem",scent:"Doce",type:"EDP",cost:535},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:300},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:405},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:485},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL LEGERE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:280},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL LEGERE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:375},
+  {brand:"CAROLINA HERRERA",name:"GOOD GIRL LEGERE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:475},
+  {brand:"CAROLINA HERRERA",name:"LA BOMBA",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:315},
+  {brand:"CAROLINA HERRERA",name:"LA BOMBA",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:445},
+  {brand:"CAROLINA HERRERA",name:"LA BOMBA",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:550},
+  {brand:"CAROLINA HERRERA",name:"VERY GOOD GIRL",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:300},
+  {brand:"CAROLINA HERRERA",name:"VERY GOOD GIRL ELIXIR",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:335},
+  {brand:"CAROLINA HERRERA",name:"VERY GOOD GIRL ELIXIR",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:445},
+  {brand:"CAROLINA HERRERA",name:"VERY GOOD GIRL ELIXIR",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:575},
+  {brand:"CAROLINA HERRERA",name:"WILD LOVE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:495},
+  {brand:"CAROLINA HERRERA",name:"WILD LOVE MEN",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:405},
+  // DIOR
+  {brand:"DIOR",name:"SAUVAGE",vol:"60ML",gender:"masc",scent:"Fresco",type:"EDT",cost:500},
+  {brand:"DIOR",name:"SAUVAGE",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:580},
+  {brand:"DIOR",name:"SAUVAGE",vol:"200ML",gender:"masc",scent:"Fresco",type:"EDT",cost:800},
+  {brand:"DIOR",name:"SAUVAGE",vol:"60ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:580},
+  {brand:"DIOR",name:"SAUVAGE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:690},
+  {brand:"DIOR",name:"SAUVAGE",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:920},
+  {brand:"DIOR",name:"SAUVAGE PARFUM",vol:"60ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:705},
+  {brand:"DIOR",name:"SAUVAGE PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:810},
+  {brand:"DIOR",name:"SAUVAGE ELIXIR",vol:"60ML",gender:"masc",scent:"Amadeirado",type:"Elixir",cost:810},
+  {brand:"DIOR",name:"SAUVAGE ELIXIR",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Elixir",cost:1090},
+  {brand:"DIOR",name:"SAUVAGE ELIXIR",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"Elixir",cost:1345},
+  {brand:"DIOR",name:"SAUVAGE EAU FORTE",vol:"60ML",gender:"masc",scent:"Fresco",type:"EDT",cost:705},
+  {brand:"DIOR",name:"SAUVAGE EAU FORTE",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:810},
+  {brand:"DIOR",name:"HOMME",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:500},
+  {brand:"DIOR",name:"HOMME",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:580},
+  {brand:"DIOR",name:"HOMME",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:700},
+  {brand:"DIOR",name:"HOMME INTENSE",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDP",cost:515},
+  {brand:"DIOR",name:"HOMME INTENSE",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:690},
+  {brand:"DIOR",name:"HOMME PARFUM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:705},
+  {brand:"DIOR",name:"HOMME PARFUM",vol:"75ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:850},
+  {brand:"DIOR",name:"FAHRENHEIT",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:580},
+  {brand:"DIOR",name:"HIGHER ENERGY",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:580},
+  {brand:"DIOR",name:"MISS DIOR",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:450},
+  {brand:"DIOR",name:"MISS DIOR",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:615},
+  {brand:"DIOR",name:"MISS DIOR",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:725},
+  {brand:"DIOR",name:"MISS DIOR N ROSES",vol:"30ML",gender:"fem",scent:"Floral",type:"EDT",cost:415},
+  {brand:"DIOR",name:"MISS DIOR N ROSES",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:625},
+  {brand:"DIOR",name:"MISS DIOR PARFUM",vol:"35ML",gender:"fem",scent:"Floral",type:"Parfum",cost:480},
+  {brand:"DIOR",name:"MISS DIOR PARFUM",vol:"50ML",gender:"fem",scent:"Floral",type:"Parfum",cost:625},
+  {brand:"DIOR",name:"MISS DIOR PARFUM",vol:"80ML",gender:"fem",scent:"Floral",type:"Parfum",cost:725},
+  {brand:"DIOR",name:"MISS DIOR BLOOMING BOUQUET",vol:"30ML",gender:"fem",scent:"Floral",type:"EDT",cost:415},
+  {brand:"DIOR",name:"MISS DIOR BLOOMING BOUQUET",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:625},
+  {brand:"DIOR",name:"MISS DIOR ESSENCE",vol:"35ML",gender:"fem",scent:"Floral",type:"EDP",cost:555},
+  {brand:"DIOR",name:"MISS DIOR ESSENCE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:630},
+  {brand:"DIOR",name:"MISS DIOR ESSENCE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:850},
+  {brand:"DIOR",name:"J'ADORE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:450},
+  {brand:"DIOR",name:"J'ADORE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:615},
+  {brand:"DIOR",name:"J'ADORE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:725},
+  {brand:"DIOR",name:"J'ADORE INFINISSIME",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:585},
+  {brand:"DIOR",name:"J'ADORE INFINISSIME",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:720},
+  {brand:"DIOR",name:"J'ADORE L'OR ESSENCE",vol:"50ML",gender:"fem",scent:"Floral",type:"Parfum",cost:825},
+  {brand:"DIOR",name:"J'ADORE L'OR ESSENCE",vol:"100ML",gender:"fem",scent:"Floral",type:"Parfum",cost:965},
+  {brand:"DIOR",name:"J'ADORE D'EAU",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:450},
+  {brand:"DIOR",name:"J'ADORE D'EAU",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:615},
+  {brand:"DIOR",name:"J'ADORE D'EAU",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:725},
+  // DAVID BECKHAM
+  {brand:"DAVID BECKHAM",name:"CLASSIC HOMME",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:130.44},
+  {brand:"DAVID BECKHAM",name:"INSTINCT",vol:"75ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:175},
+  {brand:"DAVID BECKHAM",name:"INSTINCT GOLD",vol:"75ML",gender:"masc",scent:"Oriental",type:"EDP",cost:175},
+  {brand:"DAVID BECKHAM",name:"INSTINCT CLASSIC",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:149.88},
+  {brand:"DAVID BECKHAM",name:"INSTINCT CLASSIC BLUE",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:149.88},
+  {brand:"DAVID BECKHAM",name:"BOLD INSTINCT",vol:"75ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:135},
+  // DIESEL
+  {brand:"DIESEL",name:"PLUS PLUS MAS",vol:"75ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:100},
+  {brand:"DIESEL",name:"PLUS PLUS FEM",vol:"75ML",gender:"fem",scent:"Floral",type:"EDT",cost:100},
+  {brand:"DIESEL",name:"D MAS",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:270},
+  {brand:"DIESEL",name:"ONLY THE BRAVE STREET",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:280},
+  {brand:"DIESEL",name:"RED",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:285},
+  {brand:"DIESEL",name:"LOVERDOSE",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:280},
+  // DKNY
+  {brand:"DONNA KARAN",name:"BE DELICIOUS",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:325},
+  {brand:"DONNA KARAN",name:"BE DELICIOUS GOLD",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDP",cost:300},
+  // DOLCE & GABBANA
+  {brand:"DOLCE & GABBANA",name:"LIGHT BLUE FEM",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:395},
+  {brand:"DOLCE & GABBANA",name:"LIGHT BLUE FEM",vol:"200ML",gender:"fem",scent:"Fresco",type:"EDT",cost:495},
+  {brand:"DOLCE & GABBANA",name:"LIGHT BLUE INTENSE FEM",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDP",cost:500},
+  {brand:"DOLCE & GABBANA",name:"LIGHT BLUE CAPRI IN LOVE FEM",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDP",cost:425},
+  {brand:"DOLCE & GABBANA",name:"LIGHT BLUE MAS",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:345},
+  {brand:"DOLCE & GABBANA",name:"LIGHT BLUE MAS",vol:"200ML",gender:"masc",scent:"Fresco",type:"EDT",cost:410},
+  {brand:"DOLCE & GABBANA",name:"DEVOTION MEN",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:400},
+  {brand:"DOLCE & GABBANA",name:"DEVOTION FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:415},
+  {brand:"DOLCE & GABBANA",name:"DEVOTION INTENSE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:410},
+  {brand:"DOLCE & GABBANA",name:"K",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:365},
+  {brand:"DOLCE & GABBANA",name:"K",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:400},
+  {brand:"DOLCE & GABBANA",name:"K INTENSE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:430},
+  {brand:"DOLCE & GABBANA",name:"Q",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:330},
+  {brand:"DOLCE & GABBANA",name:"Q INTENSE",vol:"100ML",gender:"fem",scent:"Oriental",type:"EDP",cost:470},
+  {brand:"DOLCE & GABBANA",name:"POUR HOMME",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:345},
+  {brand:"DOLCE & GABBANA",name:"POUR FEMME EDT",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:380},
+  {brand:"DOLCE & GABBANA",name:"POUR FEMME EDP",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:420},
+  {brand:"DOLCE & GABBANA",name:"THE ONE FEM",vol:"75ML",gender:"fem",scent:"Oriental",type:"EDP",cost:420},
+  {brand:"DOLCE & GABBANA",name:"THE ONE GOLD FEM",vol:"75ML",gender:"fem",scent:"Oriental",type:"EDP",cost:430},
+  {brand:"DOLCE & GABBANA",name:"THE ONE GOLD MAS",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:420},
+  {brand:"DOLCE & GABBANA",name:"THE ONE MAS",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:355},
+  {brand:"DOLCE & GABBANA",name:"THE ONE MAS",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:400},
+  {brand:"DOLCE & GABBANA",name:"THE ONLY ONE FEM",vol:"75ML",gender:"fem",scent:"Oriental",type:"EDP",cost:410},
+  {brand:"DOLCE & GABBANA",name:"INTENSO MAS",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:345},
+  {brand:"DOLCE & GABBANA",name:"DOLCE BLUE JASMINE",vol:"75ML",gender:"fem",scent:"Floral",type:"EDP",cost:470},
+  {brand:"DOLCE & GABBANA",name:"DOLCE VIOLET",vol:"75ML",gender:"fem",scent:"Floral",type:"EDP",cost:440},
+  // ELIZABETH ARDEN
+  {brand:"ELIZABETH ARDEN",name:"SUNFLOWERS",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:120},
+  {brand:"ELIZABETH ARDEN",name:"SUNFLOWERS HONEY DAZE",vol:"100ML",gender:"fem",scent:"Doce",type:"EDT",cost:120},
+  {brand:"ELIZABETH ARDEN",name:"SUNFLOWERS SUNLIGHT KISS",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:120},
+  {brand:"ELIZABETH ARDEN",name:"SUNFLOWERS SUNRISE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:120},
+  {brand:"ELIZABETH ARDEN",name:"WHITE TEA",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:165},
+  {brand:"ELIZABETH ARDEN",name:"WHITE TEA EAU FRAICHE",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:165},
+  {brand:"ELIZABETH ARDEN",name:"WHITE TEA LILAC",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:165},
+  {brand:"ELIZABETH ARDEN",name:"5TH AVENUE",vol:"125ML",gender:"fem",scent:"Floral",type:"EDP",cost:205},
+  {brand:"ELIZABETH ARDEN",name:"GREEN TEA PISTACHIO",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:105},
+  {brand:"ELIZABETH ARDEN",name:"RED DOOR",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:225},
+  // FERRARI
+  {brand:"FERRARI",name:"BLACK",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:135},
+  {brand:"FERRARI",name:"RED",vol:"125ML",gender:"masc",scent:"Oriental",type:"EDT",cost:135},
+  // GIORGIO ARMANI
+  {brand:"GIORGIO ARMANI",name:"ACQUA DI GIO POUR HOMME",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDT",cost:425},
+  {brand:"GIORGIO ARMANI",name:"ACQUA DI GIO POUR HOMME",vol:"200ML",gender:"masc",scent:"Aquático",type:"EDT",cost:655},
+  {brand:"GIORGIO ARMANI",name:"ACQUA DI GIO PROFONDO",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDT",cost:445},
+  {brand:"GIORGIO ARMANI",name:"ACQUA DI GIO PROFONDO PARFUM",vol:"100ML",gender:"masc",scent:"Aquático",type:"Parfum",cost:490},
+  {brand:"GIORGIO ARMANI",name:"ACQUA DI GIO PROFONDO",vol:"200ML",gender:"masc",scent:"Aquático",type:"EDP",cost:655},
+  {brand:"GIORGIO ARMANI",name:"ACQUA DI GIOIA",vol:"100ML",gender:"fem",scent:"Aquático",type:"EDP",cost:660},
+  {brand:"GIORGIO ARMANI",name:"ACQUA DI GIOIA INTENSE",vol:"50ML",gender:"fem",scent:"Aquático",type:"EDP",cost:485},
+  {brand:"GIORGIO ARMANI",name:"ARMANI CODE HOMME",vol:"125ML",gender:"masc",scent:"Oriental",type:"EDP",cost:550},
+  {brand:"GIORGIO ARMANI",name:"ARMANI CODE WOMAN",vol:"50ML",gender:"fem",scent:"Oriental",type:"EDP",cost:620},
+  {brand:"GIORGIO ARMANI",name:"NEW CODE",vol:"125ML",gender:"masc",scent:"Oriental",type:"EDT",cost:550},
+  {brand:"GIORGIO ARMANI",name:"NEW CODE",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDT",cost:570},
+  {brand:"GIORGIO ARMANI",name:"MY WAY",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:285},
+  {brand:"GIORGIO ARMANI",name:"MY WAY",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:520},
+  {brand:"GIORGIO ARMANI",name:"MY WAY",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:550},
+  {brand:"GIORGIO ARMANI",name:"SI PASSIONE INTENSE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:610},
+  {brand:"GIORGIO ARMANI",name:"SI PASSIONE INTENSE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:335},
+  {brand:"GIORGIO ARMANI",name:"SI PASSIONE INTENSE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:490},
+  {brand:"GIORGIO ARMANI",name:"SI PASSIONE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:435},
+  {brand:"GIORGIO ARMANI",name:"STRONGER WITH YOU",vol:"100ML",gender:"masc",scent:"Doce",type:"EDT",cost:425},
+  {brand:"GIORGIO ARMANI",name:"STRONGER WITH YOU PARFUM",vol:"100ML",gender:"masc",scent:"Doce",type:"Parfum",cost:445},
+  {brand:"GIORGIO ARMANI",name:"STRONGER WITH YOU INTENSELY",vol:"100ML",gender:"masc",scent:"Doce",type:"EDP",cost:455},
+  // GUCCI
+  {brand:"GUCCI",name:"FL GARDENIA REFIL",vol:"150ML",gender:"fem",scent:"Floral",type:"EDP",cost:540},
+  {brand:"GUCCI",name:"FL MAGNOLIA",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:520},
+  {brand:"GUCCI",name:"FL ORQUIDEA",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:540},
+  {brand:"GUCCI",name:"GUILTY BLACK POUR HOMME",vol:"90ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:440},
+  {brand:"GUCCI",name:"GUILTY FEMME",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:540},
+  {brand:"GUCCI",name:"GUILTY FEMME",vol:"90ML",gender:"fem",scent:"Floral",type:"EDT",cost:490},
+  {brand:"GUCCI",name:"GUILTY POUR FEMME",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:490},
+  // GIVENCHY
+  {brand:"GIVENCHY",name:"ANGE OU DEMON LE SECRET",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:450},
+  {brand:"GIVENCHY",name:"GENTL BOISEE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:505},
+  {brand:"GIVENCHY",name:"GENTL",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:460},
+  {brand:"GIVENCHY",name:"GENTL RESERVE PRIVEE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:450},
+  {brand:"GIVENCHY",name:"GENTL SOCIETY AMBREE",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:490},
+  {brand:"GIVENCHY",name:"IRRESISTIBLE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:560},
+  {brand:"GIVENCHY",name:"IRRESISTIBLE NUDE VELVET",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:560},
+  {brand:"GIVENCHY",name:"IRRESISTIBLE ROSE VELVET",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:560},
+  {brand:"GIVENCHY",name:"IRRESISTIBLE VERY FLORAL",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:560},
+  {brand:"GIVENCHY",name:"L'INTERDIT ABSOLU INTENSE",vol:"35ML",gender:"fem",scent:"Floral",type:"EDP",cost:290},
+  {brand:"GIVENCHY",name:"L'INTERDIT ABSOLU INTENSE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:475},
+  {brand:"GIVENCHY",name:"L'INTERDIT ROUGE",vol:"35ML",gender:"fem",scent:"Floral",type:"EDP",cost:270},
+  {brand:"GIVENCHY",name:"L'INTERDIT ROUGE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:470},
+  {brand:"GIVENCHY",name:"L'INTERDIT ROUGE ULTIME",vol:"35ML",gender:"fem",scent:"Floral",type:"EDP",cost:280},
+  {brand:"GIVENCHY",name:"L'INTERDIT ROUGE ULTIME",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:500},
+  {brand:"GIVENCHY",name:"L'INTERDIT PARFUM",vol:"35ML",gender:"fem",scent:"Floral",type:"Parfum",cost:325},
+  {brand:"GIVENCHY",name:"L'INTERDIT PARFUM",vol:"80ML",gender:"fem",scent:"Floral",type:"Parfum",cost:540},
+  {brand:"GIVENCHY",name:"L'INTERDIT",vol:"35ML",gender:"fem",scent:"Floral",type:"EDP",cost:280},
+  {brand:"GIVENCHY",name:"L'INTERDIT",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:380},
+  {brand:"GIVENCHY",name:"L'INTERDIT",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:460},
+  {brand:"GIVENCHY",name:"ORGANZA FEMME",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:450},
+  {brand:"GIVENCHY",name:"PI MEN",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:345},
+  // HERMES
+  {brand:"HERMÈS",name:"TERRE D'HERMÈS",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:410},
+  {brand:"HERMÈS",name:"TERRE D'HERMÈS",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:670},
+  {brand:"HERMÈS",name:"TERRE D'HERMÈS INTENSE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:589.60},
+  {brand:"HERMÈS",name:"H24",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:460},
+  {brand:"HERMÈS",name:"TWILLY",vol:"85ML",gender:"fem",scent:"Floral",type:"EDP",cost:565},
+  {brand:"HERMÈS",name:"BARENIA",vol:"100ML",gender:"uni",scent:"Amadeirado",type:"EDP",cost:615},
+  // HUGO BOSS
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED ABSOLU INTENSE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:485},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED BEYOND",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:475},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED BEYOND",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:585},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED BEYOND",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:385},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED BOLD CITRUS",vol:"100ML",gender:"masc",scent:"Cítrico",type:"EDP",cost:435},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:365},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:465},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED ELIXIR",vol:"100ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:400},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED FOR MEN",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:335},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED FOR MEN",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:435},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED INFINITE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:350},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED INFINITE",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:465},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED NIGHT",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:285},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:395},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED PARFUM",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:500},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED TONIC",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:280},
+  {brand:"HUGO BOSS",name:"BOSS BOTTLED TRIUMPH ELIXIR",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:480},
+  {brand:"HUGO BOSS",name:"BOSS ICED",vol:"75ML",gender:"masc",scent:"Fresco",type:"EDT",cost:244},
+  {brand:"HUGO BOSS",name:"BOSS JEANS",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:320},
+  {brand:"HUGO BOSS",name:"BOSS JEANS",vol:"75ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:260},
+  {brand:"HUGO BOSS",name:"THE SCENT ELIXIR FOR HIM",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:395},
+  {brand:"HUGO BOSS",name:"THE SCENT FOR HER",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:425},
+  {brand:"HUGO BOSS",name:"THE SCENT FOR MEN",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:390},
+  {brand:"HUGO BOSS",name:"THE SCENT MAGNETIC FOR MEN",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:385},
+  {brand:"HUGO BOSS",name:"HUGO INTENSE",vol:"125ML",gender:"masc",scent:"Fresco",type:"EDP",cost:350},
+  {brand:"HUGO BOSS",name:"HUGO MAN",vol:"125ML",gender:"masc",scent:"Fresco",type:"EDT",cost:295},
+  {brand:"HUGO BOSS",name:"HUGO MAN",vol:"200ML",gender:"masc",scent:"Fresco",type:"EDT",cost:365},
+  {brand:"HUGO BOSS",name:"HUGO REVERSED",vol:"75ML",gender:"masc",scent:"Fresco",type:"EDT",cost:225},
+  // ISSEY MIYAKE
+  {brand:"ISSEY MIYAKE",name:"L'EAU D'ISSEY MAS",vol:"125ML",gender:"masc",scent:"Aquático",type:"EDT",cost:245},
+  {brand:"ISSEY MIYAKE",name:"L'EAU D'ISSEY MAS",vol:"200ML",gender:"masc",scent:"Aquático",type:"EDT",cost:370},
+  {brand:"ISSEY MIYAKE",name:"L'EAU D'ISSEY FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:265},
+  {brand:"ISSEY MIYAKE",name:"INTENSE D'ISSEY",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:240},
+  {brand:"ISSEY MIYAKE",name:"DROP D'ISSEY",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:230},
+  {brand:"ISSEY MIYAKE",name:"NUIT D'ISSEY",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:330},
+  {brand:"ISSEY MIYAKE",name:"NUIT D'ISSEY",vol:"75ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:320},
+  {brand:"ISSEY MIYAKE",name:"SPORT",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:245},
+  {brand:"ISSEY MIYAKE",name:"FUSION D'ISSEY",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:290},
+  // JIMMY CHOO
+  {brand:"JIMMY CHOO",name:"I WANT CHOO WITH LOVE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:475},
+  {brand:"JIMMY CHOO",name:"I WANT CHOO FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:475.05},
+  {brand:"JIMMY CHOO",name:"I WANT CHOO FEM",vol:"40ML",gender:"fem",scent:"Floral",type:"EDP",cost:305},
+  {brand:"JIMMY CHOO",name:"I WANT CHOO LE PARFUM",vol:"100ML",gender:"fem",scent:"Floral",type:"Parfum",cost:525},
+  {brand:"JIMMY CHOO",name:"I WANT CHOO LE PARFUM",vol:"40ML",gender:"fem",scent:"Floral",type:"Parfum",cost:355},
+  // JEAN PAUL GAULTIER
+  {brand:"JEAN PAUL GAULTIER",name:"CLASSIQUE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:465},
+  {brand:"JEAN PAUL GAULTIER",name:"CLASSIQUE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDT",cost:370},
+  {brand:"JEAN PAUL GAULTIER",name:"CLASSIQUE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:490},
+  {brand:"JEAN PAUL GAULTIER",name:"CLASSIQUE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:400},
+  {brand:"JEAN PAUL GAULTIER",name:"DIVINE EDP INTENSE",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:525},
+  {brand:"JEAN PAUL GAULTIER",name:"DIVINE EDP INTENSE",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:305},
+  {brand:"JEAN PAUL GAULTIER",name:"DIVINE EDP INTENSE",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:415},
+  {brand:"JEAN PAUL GAULTIER",name:"DIVINE FEM",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:455},
+  {brand:"JEAN PAUL GAULTIER",name:"DIVINE FEM",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:255},
+  {brand:"JEAN PAUL GAULTIER",name:"DIVINE ELIXIR",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:595},
+  {brand:"JEAN PAUL GAULTIER",name:"DIVINE ELIXIR",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:355},
+  {brand:"JEAN PAUL GAULTIER",name:"DIVINE ELIXIR",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:495},
+  {brand:"JEAN PAUL GAULTIER",name:"LA BELLE",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:490},
+  {brand:"JEAN PAUL GAULTIER",name:"LA BELLE",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:260},
+  {brand:"JEAN PAUL GAULTIER",name:"LA BELLE",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:400},
+  {brand:"JEAN PAUL GAULTIER",name:"LA BELLE LE PARFUM",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:515},
+  {brand:"JEAN PAUL GAULTIER",name:"LA BELLE LE PARFUM",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:450},
+  {brand:"JEAN PAUL GAULTIER",name:"LA BELLE PARADISE GARDEN",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:545},
+  {brand:"JEAN PAUL GAULTIER",name:"LA BELLE PARADISE GARDEN",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:305},
+  {brand:"JEAN PAUL GAULTIER",name:"LA BELLE PARADISE GARDEN",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:435},
+  {brand:"JEAN PAUL GAULTIER",name:"LE BEAU",vol:"125ML",gender:"masc",scent:"Fresco",type:"EDT",cost:485},
+  {brand:"JEAN PAUL GAULTIER",name:"LE BEAU",vol:"75ML",gender:"masc",scent:"Fresco",type:"EDT",cost:390},
+  {brand:"JEAN PAUL GAULTIER",name:"LE BEAU LE PARFUM",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:600},
+  {brand:"JEAN PAUL GAULTIER",name:"LE BEAU LE PARFUM",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:445},
+  {brand:"JEAN PAUL GAULTIER",name:"LE BEAU LE PARFUM",vol:"75ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:385},
+  {brand:"JEAN PAUL GAULTIER",name:"LE BEAU PARADISE GARDEN",vol:"125ML",gender:"masc",scent:"Floral",type:"EDP",cost:500},
+  {brand:"JEAN PAUL GAULTIER",name:"LE BEAU PARADISE GARDEN",vol:"75ML",gender:"masc",scent:"Floral",type:"EDP",cost:400},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE",vol:"125ML",gender:"masc",scent:"Fresco",type:"EDT",cost:405},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE",vol:"75ML",gender:"masc",scent:"Fresco",type:"EDT",cost:355},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE ELIXIR ABSOLU PARFUM",vol:"125ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:500},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE ELIXIR ABSOLU PARFUM",vol:"200ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:715},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE ELIXIR ABSOLU PARFUM",vol:"75ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:400},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE ELIXIR PARFUM",vol:"125ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:485},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE LE PARFUM",vol:"125ML",gender:"masc",scent:"Oriental",type:"EDP",cost:465},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE LE PARFUM",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDP",cost:550},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE LE PARFUM",vol:"75ML",gender:"masc",scent:"Oriental",type:"EDP",cost:405},
+  {brand:"JEAN PAUL GAULTIER",name:"LE MALE ULTRA",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:425},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HER ABSOLU PARFUM",vol:"30ML",gender:"fem",scent:"Doce",type:"Parfum",cost:285},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HER ABSOLU PARFUM",vol:"50ML",gender:"fem",scent:"Doce",type:"Parfum",cost:480},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HER ABSOLU PARFUM",vol:"80ML",gender:"fem",scent:"Doce",type:"Parfum",cost:545},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HER",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:285},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HER",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:395},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HER",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:465},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HIM ABSOLU PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:535},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HIM ABSOLU PARFUM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:425},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HIM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:440},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HIM",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:585},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HIM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:335},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HIM ELIXIR PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:550},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HIM ELIXIR PARFUM",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:665},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL HIM ELIXIR PARFUM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:435},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL INTENSE FOR HER",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:305},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL INTENSE FOR HER",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:455},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL INTENSE FOR HER",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:550},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL INTENSE FOR HIM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:475},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL INTENSE FOR HIM",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:620},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL INTENSE FOR HIM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:395},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL LE PARFUM HER",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:305},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL LE PARFUM HER",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:455},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL LE PARFUM HER",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:505},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL LE PARFUM HIM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:450},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL LE PARFUM HIM",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:565},
+  {brand:"JEAN PAUL GAULTIER",name:"SCANDAL LE PARFUM HIM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:355},
+  // JOOP
+  {brand:"JOOP",name:"POUR HOMME",vol:"125ML",gender:"masc",scent:"Doce",type:"EDT",cost:150},
+  {brand:"JOOP",name:"POUR HOMME",vol:"200ML",gender:"masc",scent:"Doce",type:"EDT",cost:190},
+  {brand:"JOOP",name:"WOW",vol:"125ML",gender:"masc",scent:"Fresco",type:"EDT",cost:165},
+  // JACQUES BOGART
+  {brand:"JACQUES BOGART",name:"SILVER SCENT",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:145},
+  {brand:"JACQUES BOGART",name:"SILVER SCENT INTENSE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:150},
+  {brand:"JACQUES BOGART",name:"SILVER SCENT ACQUA",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDT",cost:215},
+  {brand:"JACQUES BOGART",name:"SILVER SCENT INFINIT",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:180},
+  // KENZO
+  {brand:"KENZO",name:"FLOWER BY KENZO",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:460},
+  {brand:"KENZO",name:"FLOWER BY KENZO",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:230},
+  {brand:"KENZO",name:"FLOWER BY KENZO IKEBANA",vol:"75ML",gender:"fem",scent:"Floral",type:"EDP",cost:375},
+  {brand:"KENZO",name:"FLOWER BY KENZO IKEBANA INDIGO",vol:"75ML",gender:"fem",scent:"Floral",type:"EDP",cost:330},
+  {brand:"KENZO",name:"FLOWER BY KENZO IKEBANA MIMOSA",vol:"75ML",gender:"fem",scent:"Floral",type:"EDP",cost:285},
+  {brand:"KENZO",name:"FLOWER RÉCOLTE PARISIENNE",vol:"75ML",gender:"fem",scent:"Floral",type:"EDP",cost:295},
+  {brand:"KENZO",name:"HOMME SANTAL MARIN",vol:"110ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:330},
+  {brand:"KENZO",name:"HOMME EDP",vol:"110ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:395},
+  // LACOSTE
+  {brand:"LACOSTE",name:"ORIGINAL MAS",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDP",cost:360},
+  {brand:"LACOSTE",name:"ORIGINAL AQUA MAS",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDP",cost:345},
+  {brand:"LACOSTE",name:"L'HOMME",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:285},
+  {brand:"LACOSTE",name:"BOOSTER",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:345},
+  {brand:"LACOSTE",name:"ESSENTIAL",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:240},
+  {brand:"LACOSTE",name:"RED",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:280},
+  {brand:"LACOSTE",name:"L.12.12 BRANCO",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:290},
+  {brand:"LACOSTE",name:"L.12.12 BRANCO",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:329.84},
+  {brand:"LACOSTE",name:"L.12.12 SILVER GREY",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDP",cost:315},
+  {brand:"LACOSTE",name:"L.12.12 NOIR",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:320.12},
+  {brand:"LACOSTE",name:"L.12.12 SILVER ROSE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:350},
+  {brand:"LACOSTE",name:"L.12.12 ROSE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:350},
+  {brand:"LACOSTE",name:"ORIGINAL FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:370},
+  // LANCOME
+  {brand:"LANCÔME",name:"LA VIE EST BELLE",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:490},
+  {brand:"LANCÔME",name:"LA VIE EST BELLE",vol:"150ML",gender:"fem",scent:"Doce",type:"EDP",cost:620},
+  {brand:"LANCÔME",name:"LA VIE EST BELLE",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:295},
+  {brand:"LANCÔME",name:"LA VIE EST BELLE GOLD L'EXTRAIT",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:325},
+  {brand:"LANCÔME",name:"LA VIE EST BELLE L'ELIXIR",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:490},
+  {brand:"LANCÔME",name:"LA VIE EST BELLE ROSE EXTRAORDINAIRE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:365},
+  {brand:"LANCÔME",name:"LA VIE EST BELLE ROSE EXTRAORDINAIRE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:555},
+  {brand:"LANCÔME",name:"LA VIE EST BELLE VANILLE NUDE",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:645},
+  {brand:"LANCÔME",name:"IDOLE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:520},
+  {brand:"LANCÔME",name:"IDOLE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:405},
+  {brand:"LANCÔME",name:"IDOLE NECTAR",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:445},
+  {brand:"LANCÔME",name:"IDOLE NOW",vol:"25ML",gender:"fem",scent:"Floral",type:"EDP",cost:270},
+  {brand:"LANCÔME",name:"IDOLE POWER INTENSE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:530},
+  {brand:"LANCÔME",name:"TRÉSOR LA NUIT",vol:"100ML",gender:"fem",scent:"Oriental",type:"EDP",cost:570},
+  // MERCEDES
+  {brand:"MERCEDES",name:"FOR MEN",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:240},
+  {brand:"MERCEDES",name:"FOR MEN",vol:"200ML",gender:"masc",scent:"Fresco",type:"EDT",cost:290},
+  {brand:"MERCEDES",name:"CLUB BLACK",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:240},
+  {brand:"MERCEDES",name:"CLUB",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:240},
+  {brand:"MERCEDES",name:"AMG SILVER THRILL",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:355},
+  {brand:"MERCEDES",name:"AMG BLACK THRILL",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:355},
+  {brand:"MERCEDES",name:"AMG RED THRILL",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:355},
+  {brand:"MERCEDES",name:"LE PARFUM",vol:"120ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:300},
+  {brand:"MERCEDES",name:"PRIVATE MAN",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:290},
+  {brand:"MERCEDES",name:"AIR MAN",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDP",cost:235},
+  {brand:"MERCEDES",name:"SEA MAN",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDP",cost:275},
+  {brand:"MERCEDES",name:"LAND",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:275},
+  {brand:"MERCEDES",name:"SELECT NIGHT",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:275},
+  {brand:"MERCEDES",name:"SIGN YOUR",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:235},
+  {brand:"MERCEDES",name:"WOMAN",vol:"60ML",gender:"fem",scent:"Floral",type:"EDP",cost:215},
+  // MONTBLANC
+  {brand:"MONTBLANC",name:"LEGEND",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:265},
+  {brand:"MONTBLANC",name:"LEGEND",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:365},
+  {brand:"MONTBLANC",name:"LEGEND",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:305},
+  {brand:"MONTBLANC",name:"LEGEND SPIRIT",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:270},
+  {brand:"MONTBLANC",name:"LEGEND BLUE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:325},
+  {brand:"MONTBLANC",name:"STARWALKER",vol:"75ML",gender:"masc",scent:"Fresco",type:"EDT",cost:210},
+  {brand:"MONTBLANC",name:"EXPLORER",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:310},
+  {brand:"MONTBLANC",name:"PRESENCE MAS",vol:"75ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:205},
+  {brand:"MONTBLANC",name:"SIGNATURE",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:305},
+  {brand:"MONTBLANC",name:"SIGNATURE ABSOLUE",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:285},
+  {brand:"MONTBLANC",name:"SIGNATURE ELIXIR",vol:"90ML",gender:"fem",scent:"Oriental",type:"EDP",cost:300},
+  {brand:"MONTBLANC",name:"BLACK MEISTERSTÜCK",vol:"100ML",gender:"uni",scent:"Amadeirado",type:"EDP",cost:570},
+  {brand:"MONTBLANC",name:"VETIVER GLACIER",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:430},
+  {brand:"MONTBLANC",name:"EXTREME LEATHER",vol:"100ML",gender:"uni",scent:"Amadeirado",type:"EDP",cost:430},
+  {brand:"MONTBLANC",name:"PATCHOULI",vol:"100ML",gender:"uni",scent:"Oriental",type:"EDP",cost:430},
+  {brand:"MONTBLANC",name:"STAR OUD FEM",vol:"100ML",gender:"fem",scent:"Oriental",type:"EDP",cost:560},
+  {brand:"MONTBLANC",name:"INDIVIDUEL",vol:"75ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:215},
+  {brand:"MONTBLANC",name:"INDIVIDUELLE",vol:"75ML",gender:"fem",scent:"Floral",type:"EDT",cost:215},
+  // MOSCHINO
+  {brand:"MOSCHINO",name:"LOVE LOVE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:225},
+  {brand:"MOSCHINO",name:"CHEAP AND CHIC FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:260},
+  {brand:"MOSCHINO",name:"TOY BOY MAS",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:270},
+  {brand:"MOSCHINO",name:"FRESH FEM",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:280},
+  {brand:"MOSCHINO",name:"FUNNY FEM",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:225},
+  {brand:"MOSCHINO",name:"TOY BOY 2 FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:285},
+  {brand:"MOSCHINO",name:"TOY PEARL FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:260},
+  {brand:"MOSCHINO",name:"BUBBLE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:360},
+  // MICHAEL KORS
+  {brand:"MICHAEL KORS",name:"POUR HOMME",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:475},
+  {brand:"MICHAEL KORS",name:"POUR FEMME",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:505},
+  {brand:"MICHAEL KORS",name:"GORGEOUS",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:420},
+  // MUGLER
+  {brand:"MUGLER",name:"ANGEL",vol:"25ML",gender:"fem",scent:"Doce",type:"EDP",cost:280.04},
+  {brand:"MUGLER",name:"ANGEL",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:455},
+  {brand:"MUGLER",name:"ANGEL",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:475},
+  {brand:"MUGLER",name:"ALIEN",vol:"90ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:480},
+  {brand:"MUGLER",name:"ALIEN MEN",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:410},
+  // MARINA DE BOURBON
+  {brand:"MARINA DE BOURBON",name:"ROYAL ROUGE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:190},
+  {brand:"MARINA DE BOURBON",name:"ROYAL DIAMOND",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:200},
+  {brand:"MARINA DE BOURBON",name:"RED DIAMOND",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:195},
+  {brand:"MARINA DE BOURBON",name:"PRINCESS STYLE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:195},
+  {brand:"MARINA DE BOURBON",name:"REVERENCE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:195},
+  {brand:"MARINA DE BOURBON",name:"ROYAL STYLE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:195},
+  {brand:"MARINA DE BOURBON",name:"GOLDEN DYNASTIE",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:215},
+  // NAUTICA
+  {brand:"NAUTICA",name:"VOYAGE",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDT",cost:90},
+  {brand:"NAUTICA",name:"VOYAGE",vol:"200ML",gender:"masc",scent:"Aquático",type:"EDT",cost:135},
+  // NINA RICCI
+  {brand:"NINA RICCI",name:"NINA FLEUR",vol:"80ML",gender:"fem",scent:"Floral",type:"EDT",cost:345},
+  {brand:"NINA RICCI",name:"NINA ILLUSION",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:400},
+  {brand:"NINA RICCI",name:"NINA NATURE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDT",cost:320},
+  {brand:"NINA RICCI",name:"NINA ROSE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDT",cost:330},
+  {brand:"NINA RICCI",name:"NINA VENUS",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:300},
+  {brand:"NINA RICCI",name:"NINA VENUS",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:545},
+  // NARCISO RODRIGUEZ
+  {brand:"NARCISO RODRIGUEZ",name:"FOR HER",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:450},
+  {brand:"NARCISO RODRIGUEZ",name:"FOR HER",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:440},
+  {brand:"NARCISO RODRIGUEZ",name:"FOR HER INTENSE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:630},
+  {brand:"NARCISO RODRIGUEZ",name:"ALL OF ME",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:630},
+  {brand:"NARCISO RODRIGUEZ",name:"PUDRÉE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:520},
+  {brand:"NARCISO RODRIGUEZ",name:"PURE MUSC",vol:"100ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:600},
+  {brand:"NARCISO RODRIGUEZ",name:"PURE MUSC NUDE",vol:"100ML",gender:"fem",scent:"Amadeirado",type:"EDP",cost:620},
+  {brand:"NARCISO RODRIGUEZ",name:"BLEU NOIR FOR HIM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:435},
+  {brand:"NARCISO RODRIGUEZ",name:"BLEU NOIR FOR HIM PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:500},
+  // PACO RABANNE
+  {brand:"PACO RABANNE",name:"1 MILLION",vol:"100ML",gender:"masc",scent:"Doce",type:"EDT",cost:370},
+  {brand:"PACO RABANNE",name:"1 MILLION",vol:"200ML",gender:"masc",scent:"Doce",type:"EDT",cost:475},
+  {brand:"PACO RABANNE",name:"1 MILLION",vol:"50ML",gender:"masc",scent:"Doce",type:"EDT",cost:235},
+  {brand:"PACO RABANNE",name:"1 MILLION ELIXIR INTENSE",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:455},
+  {brand:"PACO RABANNE",name:"1 MILLION ELIXIR INTENSE",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDP",cost:385},
+  {brand:"PACO RABANNE",name:"1 MILLION ELIXIR INTENSE",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDP",cost:555},
+  {brand:"PACO RABANNE",name:"1 MILLION PARFUM",vol:"100ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:440},
+  {brand:"PACO RABANNE",name:"1 MILLION PARFUM",vol:"200ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:565},
+  {brand:"PACO RABANNE",name:"1 MILLION PARFUM",vol:"50ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:385},
+  {brand:"PACO RABANNE",name:"1 MILLION ROYAL",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:445},
+  {brand:"PACO RABANNE",name:"1 MILLION ROYAL",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDP",cost:565},
+  {brand:"PACO RABANNE",name:"1 MILLION ROYAL",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDP",cost:385},
+  {brand:"PACO RABANNE",name:"BLACK XS HER",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:360},
+  {brand:"PACO RABANNE",name:"BLACK XS HER",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:405},
+  {brand:"PACO RABANNE",name:"BLACK XS HER",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:200},
+  {brand:"PACO RABANNE",name:"BLACK XS HOMME",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:400},
+  {brand:"PACO RABANNE",name:"BLACK XS HOMME",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:335},
+  {brand:"PACO RABANNE",name:"FAME",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:285},
+  {brand:"PACO RABANNE",name:"FAME",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:430},
+  {brand:"PACO RABANNE",name:"FAME",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:495},
+  {brand:"PACO RABANNE",name:"FAME INTENSE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:315},
+  {brand:"PACO RABANNE",name:"FAME INTENSE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:455},
+  {brand:"PACO RABANNE",name:"FAME INTENSE",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:545},
+  {brand:"PACO RABANNE",name:"FAME PARFUM",vol:"30ML",gender:"fem",scent:"Floral",type:"Parfum",cost:270},
+  {brand:"PACO RABANNE",name:"FAME PARFUM",vol:"50ML",gender:"fem",scent:"Floral",type:"Parfum",cost:455},
+  {brand:"PACO RABANNE",name:"FAME PARFUM",vol:"80ML",gender:"fem",scent:"Floral",type:"Parfum",cost:535},
+  {brand:"PACO RABANNE",name:"INVICTUS",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDT",cost:380},
+  {brand:"PACO RABANNE",name:"INVICTUS",vol:"200ML",gender:"masc",scent:"Aquático",type:"EDT",cost:495},
+  {brand:"PACO RABANNE",name:"INVICTUS",vol:"50ML",gender:"masc",scent:"Aquático",type:"EDT",cost:345},
+  {brand:"PACO RABANNE",name:"INVICTUS PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:475},
+  {brand:"PACO RABANNE",name:"INVICTUS PARFUM",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:560},
+  {brand:"PACO RABANNE",name:"INVICTUS PARFUM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:365},
+  {brand:"PACO RABANNE",name:"INVICTUS PLATINUM",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:585},
+  {brand:"PACO RABANNE",name:"INVICTUS PLATINUM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:390},
+  {brand:"PACO RABANNE",name:"INVICTUS VICTORY ABSOLU PARFUM INTENSE",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:655},
+  {brand:"PACO RABANNE",name:"INVICTUS VICTORY ABSOLU PARFUM INTENSE",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:505},
+  {brand:"PACO RABANNE",name:"INVICTUS VICTORY ABSOLU PARFUM INTENSE",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:445},
+  {brand:"PACO RABANNE",name:"INVICTUS VICTORY",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:440},
+  {brand:"PACO RABANNE",name:"INVICTUS VICTORY",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:545},
+  {brand:"PACO RABANNE",name:"INVICTUS VICTORY",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:365},
+  {brand:"PACO RABANNE",name:"INVICTUS VICTORY ELIXIR PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:445},
+  {brand:"PACO RABANNE",name:"INVICTUS VICTORY ELIXIR PARFUM",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:600},
+  {brand:"PACO RABANNE",name:"INVICTUS VICTORY ELIXIR PARFUM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:400},
+  {brand:"PACO RABANNE",name:"LADY MILLION",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:285},
+  {brand:"PACO RABANNE",name:"LADY MILLION",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:390},
+  {brand:"PACO RABANNE",name:"LADY MILLION",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:455},
+  {brand:"PACO RABANNE",name:"LADY MILLION FABULOUS",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:455},
+  {brand:"PACO RABANNE",name:"LADY MILLION FABULOUS",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:370},
+  {brand:"PACO RABANNE",name:"LADY MILLION FABULOUS",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:290},
+  {brand:"PACO RABANNE",name:"LADY MILLION ROYAL",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:275},
+  {brand:"PACO RABANNE",name:"LADY MILLION ROYAL",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:390},
+  {brand:"PACO RABANNE",name:"LADY MILLION ROYAL",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:475},
+  {brand:"PACO RABANNE",name:"MILLION GOLD INTENSE",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:430},
+  {brand:"PACO RABANNE",name:"MILLION GOLD INTENSE",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDP",cost:655},
+  {brand:"PACO RABANNE",name:"MILLION GOLD INTENSE",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDP",cost:370},
+  {brand:"PACO RABANNE",name:"MILLION GOLD ELIXIR FOR HIM",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:470},
+  {brand:"PACO RABANNE",name:"MILLION GOLD ELIXIR FOR HIM",vol:"200ML",gender:"masc",scent:"Oriental",type:"EDP",cost:635},
+  {brand:"PACO RABANNE",name:"MILLION GOLD ELIXIR FOR HIM",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDP",cost:405},
+  {brand:"PACO RABANNE",name:"MILLION GOLD FOR HER",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:305},
+  {brand:"PACO RABANNE",name:"MILLION GOLD FOR HER",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:455},
+  {brand:"PACO RABANNE",name:"MILLION GOLD FOR HER",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:505},
+  {brand:"PACO RABANNE",name:"MILLION GOLD FOR HER PARFUM",vol:"30ML",gender:"fem",scent:"Floral",type:"Parfum",cost:345},
+  {brand:"PACO RABANNE",name:"MILLION GOLD FOR HER PARFUM",vol:"50ML",gender:"fem",scent:"Floral",type:"Parfum",cost:485},
+  {brand:"PACO RABANNE",name:"MILLION GOLD FOR HER PARFUM",vol:"90ML",gender:"fem",scent:"Floral",type:"Parfum",cost:605},
+  {brand:"PACO RABANNE",name:"OLYMPEA ABSOLU INTENSE",vol:"30ML",gender:"fem",scent:"Doce",type:"Parfum",cost:290},
+  {brand:"PACO RABANNE",name:"OLYMPEA ABSOLU INTENSE",vol:"50ML",gender:"fem",scent:"Doce",type:"Parfum",cost:455},
+  {brand:"PACO RABANNE",name:"OLYMPEA ABSOLU INTENSE",vol:"80ML",gender:"fem",scent:"Doce",type:"Parfum",cost:515},
+  {brand:"PACO RABANNE",name:"OLYMPEA BLOSSOM",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:240},
+  {brand:"PACO RABANNE",name:"OLYMPEA BLOSSOM",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:340},
+  {brand:"PACO RABANNE",name:"OLYMPEA BLOSSOM",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:435},
+  {brand:"PACO RABANNE",name:"OLYMPEA",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:290},
+  {brand:"PACO RABANNE",name:"OLYMPEA",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:390},
+  {brand:"PACO RABANNE",name:"OLYMPEA",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:460},
+  {brand:"PACO RABANNE",name:"OLYMPEA FLORA",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:270},
+  {brand:"PACO RABANNE",name:"OLYMPEA FLORA",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:400},
+  {brand:"PACO RABANNE",name:"OLYMPEA FLORA",vol:"80ML",gender:"fem",scent:"Floral",type:"EDP",cost:470},
+  {brand:"PACO RABANNE",name:"OLYMPEA PARFUM",vol:"30ML",gender:"fem",scent:"Doce",type:"Parfum",cost:290},
+  {brand:"PACO RABANNE",name:"OLYMPEA PARFUM",vol:"50ML",gender:"fem",scent:"Doce",type:"Parfum",cost:455},
+  {brand:"PACO RABANNE",name:"OLYMPEA PARFUM",vol:"80ML",gender:"fem",scent:"Doce",type:"Parfum",cost:520},
+  {brand:"PACO RABANNE",name:"OLYMPEA SOLAR INTENSE",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:270},
+  {brand:"PACO RABANNE",name:"OLYMPEA SOLAR INTENSE",vol:"50ML",gender:"fem",scent:"Doce",type:"EDP",cost:395},
+  {brand:"PACO RABANNE",name:"OLYMPEA SOLAR INTENSE",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:480},
+  {brand:"PACO RABANNE",name:"PHANTOM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:405},
+  {brand:"PACO RABANNE",name:"PHANTOM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:345},
+  {brand:"PACO RABANNE",name:"PHANTOM",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:560},
+  {brand:"PACO RABANNE",name:"PHANTOM ELIXIR INTENSE",vol:"100ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:505},
+  {brand:"PACO RABANNE",name:"PHANTOM ELIXIR INTENSE",vol:"150ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:645},
+  {brand:"PACO RABANNE",name:"PHANTOM ELIXIR INTENSE",vol:"50ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:395},
+  {brand:"PACO RABANNE",name:"PHANTOM INTENSE",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:455},
+  {brand:"PACO RABANNE",name:"PHANTOM INTENSE",vol:"50ML",gender:"masc",scent:"Oriental",type:"EDP",cost:375},
+  {brand:"PACO RABANNE",name:"PHANTOM PARFUM",vol:"100ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:465},
+  {brand:"PACO RABANNE",name:"PHANTOM PARFUM",vol:"50ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:385},
+  {brand:"PACO RABANNE",name:"PHANTOM PARFUM",vol:"150ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:585},
+  {brand:"PACO RABANNE",name:"PURE XS",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:390},
+  {brand:"PACO RABANNE",name:"PURE XS FOR HER",vol:"30ML",gender:"fem",scent:"Oriental",type:"EDP",cost:285},
+  {brand:"PACO RABANNE",name:"PURE XS FOR HER",vol:"50ML",gender:"fem",scent:"Oriental",type:"EDP",cost:345},
+  {brand:"PACO RABANNE",name:"PURE XS FOR HER",vol:"80ML",gender:"fem",scent:"Oriental",type:"EDP",cost:415},
+  {brand:"PACO RABANNE",name:"XS",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:405},
+  // PRADA
+  {brand:"PRADA",name:"CANDY",vol:"30ML",gender:"fem",scent:"Doce",type:"EDP",cost:350},
+  {brand:"PRADA",name:"CANDY",vol:"80ML",gender:"fem",scent:"Doce",type:"EDP",cost:595},
+  {brand:"PRADA",name:"LA FEMME",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:640},
+  {brand:"PRADA",name:"L'HOMME",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:595},
+  {brand:"PRADA",name:"LUNA ROSSA",vol:"150ML",gender:"masc",scent:"Fresco",type:"EDT",cost:610},
+  {brand:"PRADA",name:"LUNA ROSSA",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:580},
+  {brand:"PRADA",name:"LUNA ROSSA CARBON",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:615},
+  {brand:"PRADA",name:"LUNA ROSSA OCEAN",vol:"150ML",gender:"masc",scent:"Aquático",type:"EDT",cost:670},
+  {brand:"PRADA",name:"LUNA ROSSA OCEAN",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDT",cost:570},
+  {brand:"PRADA",name:"PARADIGME",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:580},
+  {brand:"PRADA",name:"PARADIGME",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:475},
+  {brand:"PRADA",name:"PARADOXE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:360},
+  {brand:"PRADA",name:"PARADOXE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:485},
+  {brand:"PRADA",name:"PARADOXE",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:610},
+  {brand:"PRADA",name:"PARADOXE INTENSE",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:650},
+  {brand:"PRADA",name:"PARADOXE RADICAL ESSENCE PARFUM",vol:"90ML",gender:"fem",scent:"Floral",type:"Parfum",cost:780},
+  {brand:"PRADA",name:"PARADOXE VIRTUAL FLOWER",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:485},
+  {brand:"PRADA",name:"PARADOXE VIRTUAL FLOWER",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:585},
+  // RALPH LAUREN
+  {brand:"RALPH LAUREN",name:"POLO 67",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:425},
+  {brand:"RALPH LAUREN",name:"POLO 67",vol:"125ML",gender:"masc",scent:"Fresco",type:"EDT",cost:358},
+  {brand:"RALPH LAUREN",name:"POLO BLACK",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:429},
+  {brand:"RALPH LAUREN",name:"POLO BLUE",vol:"125ML",gender:"masc",scent:"Aquático",type:"EDP",cost:438},
+  {brand:"RALPH LAUREN",name:"POLO BLUE",vol:"125ML",gender:"masc",scent:"Aquático",type:"EDT",cost:475},
+  {brand:"RALPH LAUREN",name:"POLO BLUE",vol:"200ML",gender:"masc",scent:"Aquático",type:"EDT",cost:438},
+  {brand:"RALPH LAUREN",name:"POLO HOMME",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:389},
+  {brand:"RALPH LAUREN",name:"POLO HOMME",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:425},
+  {brand:"RALPH LAUREN",name:"POLO RED HOMME",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:389},
+  {brand:"RALPH LAUREN",name:"POLO RED HOMME",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:425},
+  {brand:"RALPH LAUREN",name:"RALPH'S CLUB",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:500},
+  {brand:"RALPH LAUREN",name:"RALPH'S CLUB",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:430},
+  {brand:"RALPH LAUREN",name:"POLO SPORT",vol:"125ML",gender:"masc",scent:"Fresco",type:"EDT",cost:215},
+  // TOMMY HILFIGER
+  {brand:"TOMMY HILFIGER",name:"TOMMY MAS",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:200},
+  {brand:"TOMMY HILFIGER",name:"GIRL",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:215},
+  // VALENTINO
+  {brand:"VALENTINO",name:"DONNA CORAL FANTASY",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:720},
+  {brand:"VALENTINO",name:"DONNA CORAL FANTASY",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:425},
+  {brand:"VALENTINO",name:"DONNA CORAL FANTASY",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:600},
+  {brand:"VALENTINO",name:"DONNA",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:730},
+  {brand:"VALENTINO",name:"DONNA",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:430},
+  {brand:"VALENTINO",name:"DONNA",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:610},
+  {brand:"VALENTINO",name:"DONNA EXTRADOSE PARFUM",vol:"100ML",gender:"fem",scent:"Floral",type:"Parfum",cost:770},
+  {brand:"VALENTINO",name:"DONNA EXTRADOSE PARFUM",vol:"30ML",gender:"fem",scent:"Floral",type:"Parfum",cost:465},
+  {brand:"VALENTINO",name:"DONNA EXTRADOSE PARFUM",vol:"50ML",gender:"fem",scent:"Floral",type:"Parfum",cost:670},
+  {brand:"VALENTINO",name:"DONNA GREEN STRAVAGANZA",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:720},
+  {brand:"VALENTINO",name:"DONNA GREEN STRAVAGANZA",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:425},
+  {brand:"VALENTINO",name:"DONNA GREEN STRAVAGANZA",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:600},
+  {brand:"VALENTINO",name:"DONNA INTENSE",vol:"100ML",gender:"fem",scent:"Oriental",type:"EDP",cost:750},
+  {brand:"VALENTINO",name:"DONNA INTENSE",vol:"30ML",gender:"fem",scent:"Oriental",type:"EDP",cost:450},
+  {brand:"VALENTINO",name:"DONNA INTENSE",vol:"50ML",gender:"fem",scent:"Oriental",type:"EDP",cost:630},
+  {brand:"VALENTINO",name:"DONNA PURPLE MELANCHOLIA",vol:"100ML",gender:"fem",scent:"Oriental",type:"EDP",cost:730},
+  {brand:"VALENTINO",name:"DONNA PURPLE MELANCHOLIA",vol:"50ML",gender:"fem",scent:"Oriental",type:"EDP",cost:610},
+  {brand:"VALENTINO",name:"DONNA PURPLE MELANCHOLIA",vol:"30ML",gender:"fem",scent:"Oriental",type:"EDP",cost:430},
+  {brand:"VALENTINO",name:"DONNA YELLOW DREAM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:720},
+  {brand:"VALENTINO",name:"DONNA YELLOW DREAM",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:425},
+  {brand:"VALENTINO",name:"DONNA YELLOW DREAM",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:600},
+  {brand:"VALENTINO",name:"UOMO CORAL FANTASY",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:580},
+  {brand:"VALENTINO",name:"UOMO CORAL FANTASY",vol:"50ML",gender:"masc",scent:"Fresco",type:"EDT",cost:500},
+  {brand:"VALENTINO",name:"UOMO",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:590},
+  {brand:"VALENTINO",name:"UOMO",vol:"150ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:685},
+  {brand:"VALENTINO",name:"UOMO",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:510},
+  {brand:"VALENTINO",name:"UOMO EXTRADOSE PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:725},
+  {brand:"VALENTINO",name:"UOMO EXTRADOSE PARFUM",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:630},
+  {brand:"VALENTINO",name:"UOMO GREEN STRAVAGANZA",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:580},
+  {brand:"VALENTINO",name:"UOMO GREEN STRAVAGANZA",vol:"50ML",gender:"masc",scent:"Fresco",type:"EDT",cost:500},
+  {brand:"VALENTINO",name:"UOMO PURPLE MELANCHOLIA",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:590},
+  {brand:"VALENTINO",name:"UOMO PURPLE MELANCHOLIA",vol:"50ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:515},
+  {brand:"VALENTINO",name:"UOMO YELLOW DREAM",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:580},
+  // VERSACE
+  {brand:"VERSACE",name:"EROS",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:395},
+  {brand:"VERSACE",name:"EROS",vol:"200ML",gender:"masc",scent:"Fresco",type:"EDT",cost:510},
+  {brand:"VERSACE",name:"EROS",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:445},
+  {brand:"VERSACE",name:"EROS PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:475},
+  {brand:"VERSACE",name:"EROS PARFUM",vol:"200ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:670},
+  {brand:"VERSACE",name:"EROS FLAME",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDP",cost:425},
+  {brand:"VERSACE",name:"EROS ENERGY",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDP",cost:420},
+  {brand:"VERSACE",name:"EROS NAJIM PARFUM",vol:"100ML",gender:"masc",scent:"Oriental",type:"Parfum",cost:470},
+  {brand:"VERSACE",name:"EROS FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:415},
+  {brand:"VERSACE",name:"POUR HOMME",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDT",cost:335},
+  {brand:"VERSACE",name:"DYLAN BLUE MAS",vol:"100ML",gender:"masc",scent:"Aquático",type:"EDT",cost:405},
+  {brand:"VERSACE",name:"DYLAN BLUE MAS",vol:"200ML",gender:"masc",scent:"Aquático",type:"EDT",cost:430},
+  {brand:"VERSACE",name:"DYLAN BLUE FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:405},
+  {brand:"VERSACE",name:"DYLAN PURPLE FEM",vol:"100ML",gender:"fem",scent:"Oriental",type:"EDP",cost:425},
+  {brand:"VERSACE",name:"DYLAN TURQUOISE FEM",vol:"100ML",gender:"fem",scent:"Fresco",type:"EDT",cost:365},
+  {brand:"VERSACE",name:"CRYSTAL NOIR FEM",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:405},
+  {brand:"VERSACE",name:"CRYSTAL NOIR FEM",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:445},
+  {brand:"VERSACE",name:"CRYSTAL ABSOLU",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:425},
+  {brand:"VERSACE",name:"BRIGHT CRYSTAL",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:380.20},
+  {brand:"VERSACE",name:"YELLOW DIAMOND",vol:"100ML",gender:"fem",scent:"Floral",type:"EDT",cost:335},
+  {brand:"VERSACE",name:"YELLOW DIAMOND INTENSE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:405},
+  {brand:"VERSACE",name:"BLUE JEANS",vol:"75ML",gender:"masc",scent:"Fresco",type:"EDT",cost:159.88},
+  {brand:"VERSACE",name:"BLUE JEANS FEM",vol:"75ML",gender:"fem",scent:"Floral",type:"EDT",cost:170},
+  // YSL
+  {brand:"YVES SAINT LAURENT",name:"KOUROS POUR HOMME",vol:"100ML",gender:"masc",scent:"Oriental",type:"EDT",cost:370},
+  {brand:"YVES SAINT LAURENT",name:"LIBRE ABSOLU PLATINE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:585},
+  {brand:"YVES SAINT LAURENT",name:"LIBRE",vol:"30ML",gender:"fem",scent:"Floral",type:"EDP",cost:335},
+  {brand:"YVES SAINT LAURENT",name:"LIBRE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:460},
+  {brand:"YVES SAINT LAURENT",name:"LIBRE",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:570},
+  {brand:"YVES SAINT LAURENT",name:"LIBRE INTENSE",vol:"50ML",gender:"fem",scent:"Floral",type:"EDP",cost:585},
+  {brand:"YVES SAINT LAURENT",name:"LIBRE INTENSE",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:680},
+  {brand:"YVES SAINT LAURENT",name:"LIBRE FLORALE",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:565},
+  {brand:"YVES SAINT LAURENT",name:"LIBRE LE PARFUM",vol:"30ML",gender:"fem",scent:"Floral",type:"Parfum",cost:365},
+  {brand:"YVES SAINT LAURENT",name:"LIBRE LE PARFUM",vol:"90ML",gender:"fem",scent:"Floral",type:"Parfum",cost:700},
+  {brand:"YVES SAINT LAURENT",name:"MON PARIS",vol:"90ML",gender:"fem",scent:"Floral",type:"EDP",cost:540},
+  {brand:"YVES SAINT LAURENT",name:"MYSLF LE PARFUM",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"Parfum",cost:610},
+  {brand:"YVES SAINT LAURENT",name:"MYSLF",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:540},
+  {brand:"YVES SAINT LAURENT",name:"Y",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDP",cost:550},
+  {brand:"YVES SAINT LAURENT",name:"Y",vol:"100ML",gender:"masc",scent:"Fresco",type:"EDT",cost:480},
+  // OUTROS
+  {brand:"SHAKIRA",name:"DANCE MIDNIGHT",vol:"80ML",gender:"fem",scent:"Fresco",type:"EDT",cost:135},
+  {brand:"SHAKIRA",name:"DANCE RED MIDNIGHT",vol:"80ML",gender:"fem",scent:"Fresco",type:"EDT",cost:135},
+  {brand:"BENETTON",name:"AIM HIGH",vol:"100ML",gender:"uni",scent:"Fresco",type:"EDT",cost:135},
+  {brand:"ZIRCONIA",name:"PRIVE BEAUTIFUL LIFE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:60},
+  {brand:"ZIRCONIA",name:"PRIVE BLACK DIAMOND",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:60},
+  {brand:"ZIRCONIA",name:"PRIVE FAMOUS",vol:"100ML",gender:"uni",scent:"Amadeirado",type:"EDP",cost:60},
+  {brand:"ZIRCONIA",name:"PRIVE FORBIDDEN",vol:"100ML",gender:"uni",scent:"Oriental",type:"EDP",cost:60},
+  {brand:"ZIRCONIA",name:"PRIVE PRINCESS",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:60},
+  {brand:"ZIRCONIA",name:"PRIVE SPARTAN",vol:"100ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:60},
+  {brand:"ZIRCONIA",name:"PRIVE WILD",vol:"100ML",gender:"uni",scent:"Amadeirado",type:"EDP",cost:60},
+  {brand:"CARRERA JEANS",name:"707 ORIGINAL",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDP",cost:125},
+  {brand:"CARRERA JEANS",name:"UOMO 700 ORIGINAL",vol:"125ML",gender:"masc",scent:"Amadeirado",type:"EDT",cost:125},
+  {brand:"CARRERA JEANS",name:"ORIGINAL WHITE",vol:"125ML",gender:"uni",scent:"Fresco",type:"EDP",cost:125},
+  {brand:"CARRERA JEANS",name:"ORIGINAL BLACK",vol:"125ML",gender:"uni",scent:"Amadeirado",type:"EDP",cost:125},
+  {brand:"CARRERA JEANS",name:"767 ORIGINAL",vol:"125ML",gender:"fem",scent:"Floral",type:"EDP",cost:125},
+  {brand:"CARRERA JEANS",name:"DONNA 770 ORIGINAL",vol:"125ML",gender:"fem",scent:"Floral",type:"EDP",cost:125},
+  {brand:"JUICY COUTURE",name:"JUICY COUTURE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:350},
+  {brand:"JUICY COUTURE",name:"VIVA LA JUICY NOIR",vol:"100ML",gender:"fem",scent:"Doce",type:"EDP",cost:350},
+  {brand:"JUICY COUTURE",name:"VIVA LA JUICY ROSE",vol:"100ML",gender:"fem",scent:"Floral",type:"EDP",cost:350},
+];
+
+function fmt(val) {
+  return val.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+}
+
+function buildCatalog() {
+  const brands = [...new Set(products.map(p => p.brand))].sort();
+  const catalog = document.getElementById('catalog');
+
+  brands.forEach(brand => {
+    const brandProds = products.filter(p => p.brand === brand);
+    const section = document.createElement('section');
+    section.className = 'brand-section';
+    section.dataset.brand = brand;
+
+    section.innerHTML = `
+      <div class="brand-header">
+        <h2 class="brand-name">${brand}</h2>
+        <span class="brand-count">${brandProds.length} produtos</span>
+      </div>
+      <div class="grid" id="grid-${brand.replace(/[^a-zA-Z0-9]/g,'_')}"></div>
+    `;
+    catalog.appendChild(section);
+
+    const grid = section.querySelector('.grid');
+    brandProds.forEach((p, i) => {
+      const p1 = p.cost * 2.1;
+      const p2 = p.cost * 1.7;
+      const genderLabel = p.gender === 'masc' ? 'Masculino' : p.gender === 'fem' ? 'Feminino' : 'Unissex';
+      const card = document.createElement('div');
+      card.className = `card ${p.gender}`;
+      card.dataset.gender = p.gender;
+      card.dataset.scent = p.scent;
+      card.dataset.search = `${p.brand} ${p.name} ${p.vol} ${p.scent} ${genderLabel}`.toLowerCase();
+      card.style.animationDelay = `${i * 30}ms`;
+
+      card.innerHTML = `
+        <div class="badge-row">
+          <span class="badge ${p.gender}">${genderLabel}</span>
+          <span class="badge scent">${p.scent}</span>
+          <span class="badge type">${p.type}</span>
+        </div>
+        <div class="card-product">${p.name}</div>
+        <div class="card-volume">${p.vol}</div>
+        <div class="price-block">
+          <div class="price-item">
+            <div class="price-label">1 Unidade</div>
+            <div class="price-value">${fmt(p1)}</div>
+          </div>
+          <div class="price-divider"></div>
+          <div class="price-item">
+            <div class="price-label">2+ Unidades</div>
+            <div class="price-value bulk">${fmt(p2)}</div>
+          </div>
+        </div>
+        
+      `;
+      grid.appendChild(card);
+    });
+  });
+}
+
+function applyFilters() {
+  const activeGender = document.querySelector('[data-filter].active')?.dataset.filter || 'all';
+  const activeScent = document.querySelector('[data-scent].active')?.dataset.scent || 'all-scent';
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+  document.querySelectorAll('.card').forEach(card => {
+    const genderMatch = activeGender === 'all' || card.dataset.gender === activeGender;
+    const scentMatch = activeScent === 'all-scent' || card.dataset.scent === activeScent;
+    const searchMatch = !search || card.dataset.search.includes(search);
+    card.classList.toggle('hidden', !(genderMatch && scentMatch && searchMatch));
+  });
+
+  document.querySelectorAll('.brand-section').forEach(section => {
+    const visible = section.querySelectorAll('.card:not(.hidden)').length > 0;
+    section.classList.toggle('all-hidden', !visible);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildCatalog();
+
+  document.querySelectorAll('[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  document.querySelectorAll('[data-scent]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-scent]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  document.getElementById('searchInput').addEventListener('input', applyFilters);
+});
+</script>
+</body>
+</html>
